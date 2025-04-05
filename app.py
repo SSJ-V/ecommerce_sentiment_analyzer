@@ -16,9 +16,9 @@ def index():
         compound_score = result["compound"]
 
         # Determine sentiment label
-        if compound_score >= 0.05:
+        if compound_score >= 0.2:
             sentiment = "Positive"
-        elif compound_score <= -0.05:
+        elif compound_score <= -0.2:
             sentiment = "Negative"
         else:
             sentiment = "Neutral"
