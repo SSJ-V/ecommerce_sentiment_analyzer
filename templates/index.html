@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>E-commerce Review Sentiment Analyzer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Product Review Sentiment Analyzer</h1>
+        <form method="POST">
+            <textarea name="review" placeholder="Enter product review here..."></textarea><br>
+            <button type="submit">Analyze</button>
+        </form>
+
+        {% if sentiment %}
+            <div class="result">
+                <h2>Sentiment Result:</h2>
+                <p><strong>Sentiment:</strong> {{ sentiment }}</p>
+                <p><strong>Score:</strong> {{ score }}</p>
+               
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
