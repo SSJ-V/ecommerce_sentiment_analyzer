@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Stored Reviews</title>
+    <title>All Reviews</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <div class="container">
+        <button class="toggle-btn" onclick="toggleDarkMode()">
+            <span class="icon">🌙</span> <span class="label">Toggle Dark Mode</span>
+        </button>
+        
         <h1>All Reviews</h1>
-        <a href="{{ url_for('index') }}">← Back to Analyzer</a>
-        <table border="1" cellpadding="10" cellspacing="0">
+        <a href="{{ url_for('index') }}">&larr; Back to Analyzer</a>
+        <table class="review-table">
             <thead>
                 <tr>
                     <th>Review</th>
@@ -19,15 +23,57 @@
             </thead>
             <tbody>
                 {% for review in reviews %}
-                    <tr>
-                        <td>{{ review[0] }}</td>
-                        <td>{{ review[1] }}</td>
-                        <td>{{ review[2] }}</td>
-                        <td>{{ review[3] }}</td>
-                    </tr>
+                <tr>
+                    <td>{{ review[1] }}</td>
+                    <td>{{ review[2] }}</td>
+                    <td>{{ review[3] }}</td>
+                    <td>{{ review[4] }}</td>
+                </tr>
                 {% endfor %}
             </tbody>
         </table>
     </div>
+    <script>
+        function toggleDarkMode() {
+            const body = document.body;
+            const isDark = body.classList.toggle("dark-mode");
+            localStorage.setItem("darkMode", isDark);
+    
+            const icon = document.querySelector('.toggle-btn .icon');
+            const label = document.querySelector('.toggle-btn .label');
+    
+            // Fade out, change content, then fade back in
+            icon.style.opacity = 0;
+            label.style.opacity = 0;
+            icon.style.transform = 'scale(0.8)';
+            label.style.transform = 'scale(0.8)';
+    
+            setTimeout(() => {
+                icon.textContent = isDark ? "☀️" : "🌙";
+                label.textContent = isDark ? "Toggle Light Mode" : "Toggle Dark Mode";
+                icon.style.opacity = 1;
+                label.style.opacity = 1;
+                icon.style.transform = 'scale(1)';
+                label.style.transform = 'scale(1)';
+            }, 200);
+        }
+    
+        window.onload = function () {
+            const isDark = localStorage.getItem("darkMode") === "true";
+            const body = document.body;
+            const icon = document.querySelector('.toggle-btn .icon');
+            const label = document.querySelector('.toggle-btn .label');
+    
+            if (isDark) {
+                body.classList.add("dark-mode");
+                icon.textContent = "☀️";
+                label.textContent = "Toggle Light Mode";
+            } else {
+                icon.textContent = "🌙";
+                label.textContent = "Toggle Dark Mode";
+            }
+        };
+    </script>
+         
 </body>
 </html>

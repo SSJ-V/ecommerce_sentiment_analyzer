@@ -6,6 +6,10 @@
 </head>
 <body>
     <div class="container">
+        <button class="toggle-btn" onclick="toggleDarkMode()">
+            <span class="icon">🌙</span> <span class="label">Toggle Dark Mode</span>
+        </button>
+        
         <h1>Product Review Sentiment Analyzer</h1>
         <form method="POST">
             <textarea name="review" placeholder="Enter product review here..."></textarea><br>
@@ -13,10 +17,61 @@
         </form>
 
         {% if sentiment %}
-            <p><strong>Sentiment:</strong> {{ sentiment }}</p>
+            <p><strong>Sentiment:</strong> 
+                {{ sentiment }}
+                {% if sentiment == "Positive" %}
+                    <span class="badge badge-positive">Positive</span>
+                {% elif sentiment == "Negative" %}
+                    <span class="badge badge-negative">Negative</span>
+                {% else %}
+                    <span class="badge badge-neutral">Neutral</span>
+                {% endif %}
+            </p>
             <p><strong>Score:</strong> {{ score }}</p>
             <p><strong>Predicted Age Group:</strong> {{ age_group }}</p>
         {% endif %}
     </div>
+    <script>
+        function toggleDarkMode() {
+            const body = document.body;
+            const isDark = body.classList.toggle("dark-mode");
+            localStorage.setItem("darkMode", isDark);
+    
+            const icon = document.querySelector('.toggle-btn .icon');
+            const label = document.querySelector('.toggle-btn .label');
+    
+            // Fade out, change content, then fade back in
+            icon.style.opacity = 0;
+            label.style.opacity = 0;
+            icon.style.transform = 'scale(0.8)';
+            label.style.transform = 'scale(0.8)';
+    
+            setTimeout(() => {
+                icon.textContent = isDark ? "☀️" : "🌙";
+                label.textContent = isDark ? "Toggle Light Mode" : "Toggle Dark Mode";
+                icon.style.opacity = 1;
+                label.style.opacity = 1;
+                icon.style.transform = 'scale(1)';
+                label.style.transform = 'scale(1)';
+            }, 200);
+        }
+    
+        window.onload = function () {
+            const isDark = localStorage.getItem("darkMode") === "true";
+            const body = document.body;
+            const icon = document.querySelector('.toggle-btn .icon');
+            const label = document.querySelector('.toggle-btn .label');
+    
+            if (isDark) {
+                body.classList.add("dark-mode");
+                icon.textContent = "☀️";
+                label.textContent = "Toggle Light Mode";
+            } else {
+                icon.textContent = "🌙";
+                label.textContent = "Toggle Dark Mode";
+            }
+        };
+    </script>    
+    
 </body>
 </html>

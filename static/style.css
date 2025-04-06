@@ -1,37 +1,215 @@
+/* Base styles */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f7f7f7;
-    padding: 40px;
-    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f2f5;
+    margin: 0;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .container {
-    background: white;
-    padding: 20px 30px;
-    border-radius: 10px;
-    max-width: 600px;
-    margin: auto;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background: #fff;
+    padding: 30px 40px;
+    border-radius: 20px;
+    max-width: 700px;
+    width: 100%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1 {
+    margin-bottom: 25px;
+    font-size: 28px;
+    color: #333;
 }
 
 textarea {
-    width: 90%;
-    height: 100px;
-    margin-top: 15px;
-    padding: 10px;
+    width: 100%;
+    height: 120px;
+    padding: 15px;
     font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    resize: vertical;
+    transition: border 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: #4caf50;
 }
 
 button {
-    padding: 10px 20px;
+    padding: 12px 24px;
     font-size: 16px;
-    margin-top: 10px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    margin-top: 20px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #45a049;
 }
 
 .result {
     margin-top: 30px;
-    padding: 20px;
-    background: #e8f5e9;
+    padding: 25px;
+    background: #f9f9f9;
     border-left: 5px solid #4caf50;
+    border-radius: 10px;
+    text-align: left;
+}
+
+.result p {
+    margin: 10px 0;
+    font-size: 16px;
+    color: #333;
+}
+
+/* Badges */
+.badge {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    margin-left: 10px;
+    text-transform: uppercase;
+}
+
+.badge-positive {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.badge-negative {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.badge-neutral {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+/* Review Table */
+.review-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.review-table th,
+.review-table td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.review-table th {
+    background-color: #f0f0f0;
+}
+
+.review-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.review-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* 🌙 Dark Mode Styles */
+body.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+.dark-mode .container {
+    background-color: #1e1e1e;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode textarea,
+.dark-mode input,
+.dark-mode button {
+    background-color: #2a2a2a;
+    color: #fff;
+    border: 1px solid #444;
+}
+
+.dark-mode .review-table th,
+.dark-mode .review-table td {
+    border-color: #444;
+}
+
+.dark-mode .review-table th {
+    background-color: #2b2b2b;
+}
+
+.dark-mode .review-table tr:nth-child(even) {
+    background-color: #1f1f1f;
+}
+
+.dark-mode .review-table tr:hover {
+    background-color: #333;
+}
+
+/* Toggle Button */
+.toggle-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    padding: 8px 14px;
+    background-color: #4caf50;
+    border: none;
+    color: white;
+    border-radius: 20px;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+    z-index: 999;
+}
+
+.toggle-btn:hover {
+    background-color: #388e3c;
+}
+
+/* Footer */
+footer {
+    margin-top: 40px;
+    font-size: 13px;
+    color: #888;
+}
+.toggle-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    padding: 8px 14px;
+    background-color: #4caf50;
+    border: none;
+    color: white;
+    border-radius: 20px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.toggle-btn:hover {
+    background-color: #388e3c;
+}
+
+.toggle-btn .icon, .toggle-btn .label {
+    transition: opacity 0.3s ease, transform 0.3s ease;
 }

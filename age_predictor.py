@@ -1,19 +1,38 @@
-def predict_age_group(review):
-    review = review.lower()
+# age_predictor.py
 
-    # Very basic rules just to simulate
-    teen_keywords = ["omg", "lit", "slay", "cool", "bruh", "dope", "vibe"]
-    young_adult_keywords = ["value", "deal", "fast shipping", "love it", "worth"]
-    adult_keywords = ["quality", "durable", "reliable", "useful", "excellent"]
-    senior_keywords = ["difficult", "complicated", "hard to use", "slow", "customer support"]
+import pandas as pd
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.pipeline import Pipeline
+from sklearn.model_selection import train_test_split
+import joblib
+import os
 
-    if any(word in review for word in teen_keywords):
-        return "Teen (13-19)"
-    elif any(word in review for word in young_adult_keywords):
-        return "Young Adult (20-35)"
-    elif any(word in review for word in adult_keywords):
-        return "Adult (36-55)"
-    elif any(word in review for word in senior_keywords):
-        return "Senior (56+)"
+# 📥 Load dataset
+df = pd.read_csv("age_group_dataset.csv")
+
+# ✂️ Split (optional, we train on full data for this small dataset)
+X = df["review"]
+y = df["age_group"]
+
+# 🔄 Create pipeline
+model = Pipeline([
+    ("tfidf", TfidfVectorizer()),
+    ("clf", MultinomialNB())
+])
+
+# 🎯 Train the model
+model.fit(X, y)
+
+# 💾 Save the model
+joblib.dump(model, "age_group_model.pkl")
+
+print("✅ Age group model trained and saved.")
+
+# 🎯 Prediction function
+def predict_age_group(review_text):
+    if os.path.exists("age_group_model.pkl"):
+        model = joblib.load("age_group_model.pkl")
+        return model.predict([review_text])[0]
     else:
         return "Unknown"
