@@ -13,12 +13,9 @@
         </form>
 
         {% if sentiment %}
-            <div class="result">
-                <h2>Sentiment Result:</h2>
-                <p><strong>Sentiment:</strong> {{ sentiment }}</p>
-                <p><strong>Score:</strong> {{ score }}</p>
-               
-            </div>
+            <p><strong>Sentiment:</strong> {{ sentiment }}</p>
+            <p><strong>Score:</strong> {{ score }}</p>
+            <p><strong>Predicted Age Group:</strong> {{ age_group }}</p>
         {% endif %}
     </div>
 </body>

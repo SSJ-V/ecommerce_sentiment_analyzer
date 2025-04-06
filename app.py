@@ -1,5 +1,12 @@
+from age_predictor import predict_age_group
+from database import insert_review, init_db
+from customer_behavior import log_customer_behavior
 from flask import Flask, request, render_template
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+from database import get_all_reviews  
+
+# Initialize the database
+init_db()
 
 app = Flask(__name__)
 analyzer = SentimentIntensityAnalyzer()
@@ -7,7 +14,7 @@ analyzer = SentimentIntensityAnalyzer()
 # 🔧 Define custom sentiment weights
 custom_words = {
     "trash": -3.0,
-    "trashy": -3.0,           
+    "trashy": -3.0,
     "breaks": -2.0,
     "breaks easily": -2.5,
     "poor quality": -2.8,
@@ -25,7 +32,6 @@ custom_words = {
     "waste of money": -3.0,
 }
 
-
 # 💬 Add them to VADER's lexicon
 analyzer.lexicon.update(custom_words)
 
@@ -34,10 +40,11 @@ def index():
     sentiment = ""
     score = 0
     review = ""
+    age_group = ""
 
     if request.method == "POST":
         review = request.form["review"]
-        if review.strip():  # make sure it's not empty
+        if review.strip():
             result = analyzer.polarity_scores(review)
             compound_score = result["compound"]
 
@@ -48,10 +55,30 @@ def index():
             else:
                 sentiment = "Neutral"
 
-            return render_template("index.html", sentiment=sentiment, score=round(compound_score, 2), review=review)
+            # ✅ Predict age group from review
+            age_group = predict_age_group(review)
 
-    # fallback in case of empty form
-    return render_template("index.html", sentiment=sentiment, score=score, review=review)
+            # ✅ Log behavior
+            log_customer_behavior(review)
+
+            # ✅ Save to database
+            insert_review(review, sentiment, compound_score, age_group)
+
+            return render_template(
+                "index.html",
+                sentiment=sentiment,
+                score=round(compound_score, 2),
+                review=review,
+                age_group=age_group
+            )
+
+    # fallback in case of GET or empty form
+    return render_template("index.html", sentiment=sentiment, score=score, review=review, age_group=age_group)
+
+@app.route("/reviews")
+def reviews():
+    all_reviews = get_all_reviews()
+    return render_template("reviews.html", reviews=all_reviews)
 
 if __name__ == "__main__":
     app.run(debug=True)

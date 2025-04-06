@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stored Reviews</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>All Reviews</h1>
+        <a href="{{ url_for('index') }}">← Back to Analyzer</a>
+        <table border="1" cellpadding="10" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>Review</th>
+                    <th>Sentiment</th>
+                    <th>Score</th>
+                    <th>Age Group</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for review in reviews %}
+                    <tr>
+                        <td>{{ review[0] }}</td>
+                        <td>{{ review[1] }}</td>
+                        <td>{{ review[2] }}</td>
+                        <td>{{ review[3] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
