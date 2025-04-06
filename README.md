@@ -1,116 +1,112 @@
-Absolutely! Here's a fresh and clean `README.md` with a **bold project heading**, ready for GitHub:
+Absolutely! Here's a polished `README.md` you can use for your GitHub repo:
 
 ---
 
 ```markdown
-# **🛍️ E-commerce Product Review Sentiment Analyzer**
+# 🛍️ E-commerce Product Review Sentiment Analyzer
 
-A simple Flask-based web application that analyzes the sentiment of customer reviews using **VADER Sentiment Analysis**. Ideal for e-commerce platforms to quickly evaluate product feedback as **Positive**, **Neutral**, or **Negative**.
+An AI-powered web application that analyzes customer reviews to determine **sentiment polarity** (Positive, Negative, or Neutral), calculates **sentiment scores**, and predicts the **customer's age group** based on review content. Built with **Flask**, **Python**, **SQLite**, and **Scikit-learn**.
 
 ---
 
 ## 🚀 Features
 
-- 🔍 Instant sentiment analysis of product reviews
-- 📈 Displays both sentiment label and score
-- 🧠 Uses pre-trained VADER model for accurate results
-- 💻 Clean and user-friendly interface
+✅ Analyze sentiment of product reviews  
+✅ Predict customer age group using NLP & Machine Learning  
+✅ Store reviews in a local SQLite database  
+✅ View all reviews in a styled table (`/reviews` page)  
+✅ Toggle between Light & Dark Mode 🌙☀️  
+✅ Smooth badge styling for sentiment type  
+✅ Persistent dark mode using `localStorage`  
+✅ Clean, responsive UI with hover/table effects  
 
 ---
 
-## 🛠️ Technologies Used
+## 🧠 Technologies Used
 
-- **Python 3**
-- **Flask** – Web framework
-- **VADER SentimentIntensityAnalyzer** – For sentiment scoring
-- **HTML5/CSS3 + Bootstrap** – For the frontend UI
-
----
-
-## 📂 Project Structure
+- **Frontend:** HTML5, CSS3, Vanilla JS  
+- **Backend:** Python, Flask  
+- **NLP & ML:** Scikit-learn, VADER (NLTK)  
+- **Database:** SQLite (via `sqlite3`)  
+- **Model Persistence:** Joblib  
+- **Deployment Ready:** Can be hosted on Render, Heroku, etc.
 
 ---
 
-## 💡 How It Works
-
-1. User enters a product review in the text box.
-2. The review is sent to the Flask backend.
-3. VADER analyzes the review and returns:
-   - **Compound score**
-   - **Sentiment label** based on the score
-4. The result is displayed on the page.
-
-### 🎯 Sentiment Interpretation
-
-| Compound Score      | Sentiment  |
-|---------------------|------------|
-| >= 0.05             | Positive   |
-| > -0.05 and < 0.05  | Neutral    |
-| <= -0.05            | Negative   |
+## 📁 Project Structure
 
 ---
 
-## ⚙️ Getting Started
+## 📊 Example Output
 
-### 1. Clone the Repository
+> Input: _"This product is amazing and works great!"_
 
-```bash
-git clone https://github.com/yourusername/ecommerce-sentiment-analyzer.git
-cd ecommerce-sentiment-analyzer
-```
-
-### 2. Create a Virtual Environment (optional but recommended)
-
-```bash
-python -m venv venv
-venv\Scripts\activate     # Windows
-source venv/bin/activate  # macOS/Linux
-```
-
-### 3. Install Dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
-### 4. Run the App
-
-```bash
-python app.py
-```
-
-Now open your browser and go to 👉 **http://127.0.0.1:5000**
+- **Sentiment:** Positive ✅  
+- **Score:** 0.85  
+- **Predicted Age Group:** Young Adult (20–35)
 
 ---
 
-## 📸 Screenshot
+## 🧪 How to Run Locally
 
-![Screenshot](screenshot.png) <!-- Add your own image file here -->![image](https://github.com/user-attachments/assets/d961d1aa-53b2-48b7-9d84-26edf653e318)
+1. **Clone the repo**
+   ```bash
+   git clone https://github.com/your-username/ecommerce-sentiment-analyzer.git
+   cd ecommerce-sentiment-analyzer
+   ```
 
+2. **(Optional) Create a virtual environment**
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # or venv\Scripts\activate on Windows
+   ```
+
+3. **Install dependencies**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. **Train Age Group Model**
+   ```bash
+   python age_predictor.py
+   ```
+
+5. **Run the app**
+   ```bash
+   python app.py
+   ```
+
+6. Open your browser and go to [http://127.0.0.1:5000](http://127.0.0.1:5000)
+
+---
+
+## 📝 Future Ideas
+
+- 📊 Add charts (Pie/Bar) to visualize review sentiment
+- 🔍 Add filter & search to `/reviews` page
+- 🔐 Add user login for personalized review history
+- ☁️ Deploy to the cloud (Heroku, Render, etc.)
+
+---
+
+## 📸 Screenshots
+
+| Analyzer Page | All Reviews |
+|---------------|-------------|
+| ![Analyzer Screenshot](screenshots/analyzer.png) ![image](https://github.com/user-attachments/assets/4a8fbce3-37a8-4eac-9a11-782f6a92a9f3)
+ | ![Reviews Screenshot](screenshots/reviews.png) ![image](https://github.com/user-attachments/assets/d3aa7447-ae1f-4542-901f-3b1801a95aef)
+ |
+
+---
+
+## 🧑‍💻 Author
+
+Made by Sanjeevraj
 
 ---
 
 ## 📄 License
 
-This project is licensed under the MIT License.  
-Feel free to use, modify, and share it!
+This project is open-source and available under the [MIT License](LICENSE).
 
----
-
-## ✨ Future Enhancements
-
-- Add login/signup system for users
-- Store and display historical sentiment data
-- Add charts to visualize sentiment trends
-- Create a REST API for frontend integration
-
----
-
-## 🙌 Author & Credits
-
-Created by **Sanjeevraj T**  
-Inspired by real-world product sentiment analysis systems.  
-Thanks to the open-source VADER community!
-
----
 ```
