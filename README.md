@@ -2,7 +2,7 @@ Absolutely! Here's a polished `README.md` you can use for your GitHub repo:
 
 ---
 
-```markdown
+```
 # 🛍️ E-commerce Product Review Sentiment Analyzer
 
 An AI-powered web application that analyzes customer reviews to determine **sentiment polarity** (Positive, Negative, or Neutral), calculates **sentiment scores**, and predicts the **customer's age group** based on review content. Built with **Flask**, **Python**, **SQLite**, and **Scikit-learn**.
@@ -50,29 +50,24 @@ An AI-powered web application that analyzes customer reviews to determine **sent
 ## 🧪 How to Run Locally
 
 1. **Clone the repo**
-   ```bash
    git clone https://github.com/your-username/ecommerce-sentiment-analyzer.git
    cd ecommerce-sentiment-analyzer
    ```
 
 2. **(Optional) Create a virtual environment**
-   ```bash
    python -m venv venv
    source venv/bin/activate  # or venv\Scripts\activate on Windows
    ```
 
 3. **Install dependencies**
-   ```bash
    pip install -r requirements.txt
    ```
 
 4. **Train Age Group Model**
-   ```bash
    python age_predictor.py
    ```
 
 5. **Run the app**
-   ```bash
    python app.py
    ```
 
