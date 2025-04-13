@@ -1,8 +1,7 @@
-Absolutely! Here's a polished `README.md` you can use for your GitHub repo:
-
+#Ecommerce Sentiment Analyzer
 ---
 
-```
+```markdown
 # 🛍️ E-commerce Product Review Sentiment Analyzer
 
 An AI-powered web application that analyzes customer reviews to determine **sentiment polarity** (Positive, Negative, or Neutral), calculates **sentiment scores**, and predicts the **customer's age group** based on review content. Built with **Flask**, **Python**, **SQLite**, and **Scikit-learn**.
@@ -31,12 +30,6 @@ An AI-powered web application that analyzes customer reviews to determine **sent
 - **Model Persistence:** Joblib  
 - **Deployment Ready:** Can be hosted on Render, Heroku, etc.
 
----
-
-## 📁 Project Structure
-
----
-
 ## 📊 Example Output
 
 > Input: _"This product is amazing and works great!"_
@@ -50,24 +43,29 @@ An AI-powered web application that analyzes customer reviews to determine **sent
 ## 🧪 How to Run Locally
 
 1. **Clone the repo**
+   ```bash
    git clone https://github.com/your-username/ecommerce-sentiment-analyzer.git
    cd ecommerce-sentiment-analyzer
    ```
 
 2. **(Optional) Create a virtual environment**
+   ```bash
    python -m venv venv
    source venv/bin/activate  # or venv\Scripts\activate on Windows
    ```
 
 3. **Install dependencies**
+   ```bash
    pip install -r requirements.txt
    ```
 
 4. **Train Age Group Model**
+   ```bash
    python age_predictor.py
    ```
 
 5. **Run the app**
+   ```bash
    python app.py
    ```
 
@@ -84,19 +82,11 @@ An AI-powered web application that analyzes customer reviews to determine **sent
 
 ---
 
-## 📸 Screenshots
-
-| Analyzer Page | All Reviews |
-|---------------|-------------|
-| ![Analyzer Screenshot](screenshots/analyzer.png) ![image](https://github.com/user-attachments/assets/4a8fbce3-37a8-4eac-9a11-782f6a92a9f3)
- | ![Reviews Screenshot](screenshots/reviews.png) ![image](https://github.com/user-attachments/assets/d3aa7447-ae1f-4542-901f-3b1801a95aef)
- |
-
 ---
 
 ## 🧑‍💻 Author
 
-Made by Sanjeevraj
+Made with ❤️ by [Your Name]
 
 ---
 
