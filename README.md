@@ -86,12 +86,8 @@ An AI-powered web application that analyzes customer reviews to determine **sent
 
 ## 🧑‍💻 Author
 
-Made with ❤️ by [Your Name]
-
----
+Made by [Sanjeevraj T]
 
 ## 📄 License
 
 This project is open-source and available under the [MIT License](LICENSE).
-
-```
